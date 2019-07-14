@@ -9,27 +9,45 @@
 import UIKit
 
 class CityVC: UIViewController {
-
+    
+    @IBOutlet weak var imageConditionIcon: UIImageView!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var cityAndCountryNameLabel: UILabel!
+    @IBOutlet weak var mornTempLabel: UILabel!
+    @IBOutlet weak var evenTempLabel: UILabel!
+    @IBOutlet weak var nightTempLabel: UILabel!
+    @IBOutlet weak var fixedMorningLb: UILabel!
+    @IBOutlet weak var fixedEveningLb: UILabel!
+    @IBOutlet weak var fixedNightLb: UILabel!
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        cityAndCountryNameLabel.text = "\(CityData[Index].cityName!), \(CityData[Index].countryName!)"
+        
+        dayLabel.text = "Today is \(CityData[Index].currentDay!)"
+        
+        tempLabel.text = "\(CityData[Index].citytemp)°"
+        
+        mornTempLabel.text = "\(CityData[Index].morning)°"
+        
+        evenTempLabel.text = "\(CityData[Index].evening)°"
+        
+        nightTempLabel.text = "\(CityData[Index].night)°"
+        
+        descLabel.text = CityData[Index].desc
+        
+        imageConditionIcon.image = UIImage(named: CityData[Index].image ?? "")
+        
+        
+    }
+    @IBAction func CloseCityVc(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
